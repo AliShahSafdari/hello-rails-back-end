@@ -14,3 +14,12 @@
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
 # end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'http://localhost:3001' # Update with your React app's URL if different
+  
+      resource '/random_greeting',
+        headers: :any,
+        methods: [:get]
+    end
+  end
